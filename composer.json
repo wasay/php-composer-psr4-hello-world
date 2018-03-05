@@ -1,0 +1,27 @@
+{
+  "name": "wasaysyed/php-psr4-basic",
+  "description": "test project",
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Wasay Syed",
+      "email": "i@wasaysyed.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "archive": {
+    "exclude": [
+      "vendor",
+      ".DS_Store",
+      "*.log"
+    ]
+  }
+}
