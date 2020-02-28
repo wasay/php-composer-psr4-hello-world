@@ -1,25 +1,23 @@
 PHP Composer PSR-4 Basic
 =============
 
-This is a basic tutorial.
-
-I have struggled to find basic example of php/composer/psr-4.
+I had struggled to find basic example of php/composer/psr-4.
 Almost all example's have some kind of npm based frameworks.
+I wanted to create a basic tutorial using composer autoloader.
 
-I hope this tutorial will be helpful to you to get started.
-
-[Helpful answer to read up](https://stackoverflow.com/questions/28046052/composer-autoload-full-example)
+I hope this basic tutorial will be helpful to you to get started.
 
 You can clone this git repository or follow along the below steps.
 
 * install [php](http://php.net)
 * install [composer](http://getcomposer.org/)
+* read up [Composer Autoloader at stackoverflow](https://stackoverflow.com/questions/28046052/composer-autoload-full-example)
 * add composer to environment variables path value
 * open bash/command prompt/power shell
 * create project folder
 * cd into project folder
 * composer init
-* update composer.json add:
+* update composer.json by adding following lines:
 ```json
 "autoload": {
     "psr-4": {
@@ -27,12 +25,17 @@ You can clone this git repository or follow along the below steps.
     }
 },
 ```
-* composer update
+* update composer
+```bash
+composer update
+```
 
 * created folder app
-* cd into app
+```bash
+cd into app
+```
 
-* create file bootstrap.php
+* create file /app/bootstrap.php
 ```php
 <?php
     define('BASEPATH', __DIR__);
@@ -45,7 +48,7 @@ You can clone this git repository or follow along the below steps.
     $router = new App\Providers\Router();
 ```
 
-* create file routes.php
+* create file /app/routes.php
 ```php
 <?php
 $router->add('/',function(){
@@ -58,11 +61,13 @@ $router->add('/hello',function() use ($router){
 });
 ```
 
-* create folder Http
-* create folder Controllers
+* create folder /app/Http
+* create folder /app/Controllers
+```bash
 * cd into Controllers
+```
 
-* create file HomeController.php with following code
+* create file /app/Http/Controllers/HomeController.php with following code
 ```php
 <?php
 namespace App\Http\Controllers;
@@ -83,9 +88,8 @@ class HomeController
 }
 ```
 
-* return one folder up to app folder
-* create a folder named Providers
-* create file Router.php
+* create a folder named /app/Providers
+* create file /app/Providers/Router.php
 ```php
 <?php
 namespace App\Providers;
@@ -147,8 +151,7 @@ class Router
 }
 ```
 
-* cd to root folder
-
+* create a folder /public in root
 * create file /public/index.php with following content
 ```php
 <?php
@@ -159,10 +162,15 @@ $router->dispatch();
 ```
 
 * generate autoload files if any
-* composer dumpautoload -o
+* run the command in root folder
+```bash
+composer dumpautoload -o
+```
 
-* test site
-* php -S localhost:8080 -t public/
+* if all is well, test the web site
+```bash
+php -S localhost:8080 -t public/
+```
 * browser the url at [http://localhost:8080](http://localhost:8080)
 
 Appreciate if you mark the git repository with a star if this has been helpful or userful to you.
@@ -170,3 +178,7 @@ Appreciate if you mark the git repository with a star if this has been helpful o
 Checkout [Modernize Your Legacy PHP Application](http://mlaphp.com/) for dependency injection concept.
 
 [My Blog @ WasaySyed.com](http://www.wasaysyed.com)
+
+Previous releases:
+[Version 1 on Mar 5, 2018](https://github.com/wasay/php-composer-psr4-hello-world/releases/tag/2018.03.05)
+* Version 1 does not have routes and views implemented.
