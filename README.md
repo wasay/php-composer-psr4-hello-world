@@ -16,26 +16,25 @@ You can clone this git repository or follow along the below steps.
 * open bash/command prompt/power shell
 * create project folder
 * cd into project folder
-* composer init
+```bash
+composer init
+```
 * update composer.json by adding following lines:
 ```json
 "autoload": {
     "psr-4": {
         "App\\": "app/"
     }
-},
+}
 ```
 * update composer
 ```bash
 composer update
 ```
 
-* created folder app
-```bash
-cd into app
-```
+* forward slash / signifies your project folder, not system root
 
-* create file /app/bootstrap.php
+* create file /app/bootstrap.php and add following code in the file
 ```php
 <?php
     define('BASEPATH', __DIR__);
@@ -48,7 +47,7 @@ cd into app
     $router = new App\Providers\Router();
 ```
 
-* create file /app/routes.php
+* create file /app/routes.php and add following code in the file
 ```php
 <?php
 $router->add('/',function(){
@@ -61,13 +60,7 @@ $router->add('/hello',function() use ($router){
 });
 ```
 
-* create folder /app/Http
-* create folder /app/Controllers
-```bash
-* cd into Controllers
-```
-
-* create file /app/Http/Controllers/HomeController.php with following code
+* create file /app/Http/Controllers/HomeController.php and add following code in the file
 ```php
 <?php
 namespace App\Http\Controllers;
@@ -88,8 +81,7 @@ class HomeController
 }
 ```
 
-* create a folder named /app/Providers
-* create file /app/Providers/Router.php
+* create file /app/Providers/Router.php and add following code in the file
 ```php
 <?php
 namespace App\Providers;
@@ -151,8 +143,7 @@ class Router
 }
 ```
 
-* create a folder /public in root
-* create file /public/index.php with following content
+* create file /public/index.php and add following code in the file
 ```php
 <?php
 require '../app/bootstrap.php';
@@ -161,8 +152,7 @@ require '../app/routes.php';
 $router->dispatch();
 ```
 
-* generate autoload files if any
-* run the command in root folder
+* run the composer command to generate autoload references
 ```bash
 composer dumpautoload -o
 ```
