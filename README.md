@@ -1,6 +1,8 @@
 PHP Composer PSR-4 Basic
 =============
 
+A minimal, dependency-free example of Composer PSR-4 autoloading in PHP, with a small router, controller and views. Written by [Wasay Syed](https://github.com/wasay) ([wasaysyed.com](https://www.wasaysyed.com)); updated in 2026 for PHP 8.1 and later.
+
 I had struggled to find basic example of php/composer/psr-4.
 Almost all example's have some kind of npm based frameworks.
 I wanted to create a basic tutorial using composer autoloader.
@@ -9,8 +11,8 @@ I hope this basic tutorial will be helpful to you to get started.
 
 You can clone this git repository or follow along the below steps.
 
-* install [php](http://php.net)
-* install [composer](http://getcomposer.org/)
+* install [php](https://www.php.net) 8.1 or later
+* install [composer](https://getcomposer.org/)
 * read up [Composer Autoloader at stackoverflow](https://stackoverflow.com/questions/28046052/composer-autoload-full-example)
 * add composer to environment variables path value
 * open bash/command prompt/power shell
@@ -94,7 +96,7 @@ class Router
 	public function __construct()
 	{
 		$this->notFound = function ($url) {
-			echo "404 - $url was not found!";
+			echo "404 - " . htmlspecialchars($url, ENT_QUOTES) . " was not found!";
 		};
 	}
 
@@ -117,7 +119,7 @@ class Router
 
 		foreach ($this->routes as $url => $action)
 		{
-			if ($url == $_SERVER['REQUEST_URI'])
+			if ($url == parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))
 			{
 				return $action();
 			}
@@ -131,7 +133,7 @@ class Router
 		{
 			return file_get_contents($view_path . $view_name);
 		}
-		throw new Exception("View does not exist: " . $view_path . $view_name);
+		throw new \Exception("View does not exist: " . $view_path . $view_name);
 	}
 
 	public function view_display($view_name)
@@ -167,7 +169,7 @@ Appreciate if you mark the git repository with a star if this has been helpful o
 
 Checkout [Modernize Your Legacy PHP Application](http://mlaphp.com/) for dependency injection concept.
 
-[My Blog @ WasaySyed.com](http://www.wasaysyed.com)
+[My Blog @ WasaySyed.com](https://www.wasaysyed.com)
 
 Previous releases:
 [Version 1 on Mar 5, 2018](https://github.com/wasay/php-composer-psr4-hello-world/releases/tag/2018.03.05)

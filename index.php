@@ -1,6 +1,6 @@
 <?php
 
-$loader = require 'vendor/autoload.php';
+require __DIR__ . '/app/bootstrap.php';
 
-$hello = new App\Controllers\HomeController();
+$hello = new App\Http\Controllers\HomeController();
 echo $hello->show();

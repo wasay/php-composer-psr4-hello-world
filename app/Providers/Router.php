@@ -11,7 +11,7 @@ class Router
 	public function __construct()
 	{
 		$this->notFound = function ($url) {
-			echo "404 - $url was not found!";
+			echo "404 - " . htmlspecialchars($url, ENT_QUOTES) . " was not found!";
 		};
 	}
 
@@ -34,7 +34,7 @@ class Router
 
 		foreach ($this->routes as $url => $action)
 		{
-			if ($url == $_SERVER['REQUEST_URI'])
+			if ($url == parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))
 			{
 				return $action();
 			}
@@ -48,7 +48,7 @@ class Router
 		{
 			return file_get_contents($view_path . $view_name);
 		}
-		throw new Exception("View does not exist: " . $view_path . $view_name);
+		throw new \Exception("View does not exist: " . $view_path . $view_name);
 	}
 
 	public function view_display($view_name)
