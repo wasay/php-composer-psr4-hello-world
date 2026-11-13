@@ -1,8 +1,16 @@
 {
   "name": "wasaysyed/php-psr4-basic",
-  "description": "test project",
+  "description": "A minimal, dependency-free example of Composer PSR-4 autoloading in PHP.",
+  "keywords": [
+    "php",
+    "composer",
+    "psr-4",
+    "autoloading",
+    "tutorial",
+    "example"
+  ],
   "require": {
-    "php": ">=5.3.0"
+    "php": ">=8.1"
   },
   "minimum-stability": "stable",
   "license": "MIT",
